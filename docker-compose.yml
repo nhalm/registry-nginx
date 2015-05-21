@@ -1,0 +1,13 @@
+nginx:
+  build: "nginx"
+  ports:
+    - "5000:5000"
+  links:
+    - registryv2:registryv2
+registryv2:
+  image: registry:2.0
+  ports:
+    - "5000"
+  volumes:
+    - /root/config.yml:/root/config.yml
+  command: /root/config.yml
